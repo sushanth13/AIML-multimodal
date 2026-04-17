@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Caption Generator</title>
+    <style>
+        :root {
+            --bg-top: #fff3df;
+            --bg-bottom: #eef6ff;
+            --card: rgba(255, 255, 255, 0.84);
+            --text: #203040;
+            --muted: #5f6f7f;
+            --accent: #d96c4a;
+            --accent-strong: #b95336;
+            --accent-soft: #ffe0d5;
+            --line: rgba(32, 48, 64, 0.12);
+            --shadow: 0 22px 48px rgba(31, 45, 61, 0.14);
+            --success: #1e7c5f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 0;
+            color: var(--text);
+            font-family: "Trebuchet MS", "Lucida Sans", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(217, 108, 74, 0.22), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(112, 171, 208, 0.24), transparent 30%),
+                linear-gradient(135deg, var(--bg-top), var(--bg-bottom));
+        }
+
+        a,
+        button,
+        input {
+            font: inherit;
+        }
+
+        .page {
+            width: 100%;
+            min-height: 100vh;
+            border: none;
+            border-radius: 0;
+            overflow: hidden;
+            background: var(--card);
+            backdrop-filter: blur(14px);
+            box-shadow: none;
+        }
+
+        .hero {
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: flex-start;
+            background: linear-gradient(135deg, rgba(217, 108, 74, 0.12), rgba(112, 171, 208, 0.15));
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: var(--accent-strong);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2 {
+            margin: 0;
+            font-family: "Palatino Linotype", "Book Antiqua", serif;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 2.8vw, 3rem);
+            line-height: 1.05;
+        }
+
+        .subtitle {
+            max-width: 620px;
+            margin: 10px 0 0;
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            white-space: nowrap;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            box-shadow: 0 10px 24px rgba(217, 108, 74, 0.24);
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: minmax(0, 0.78fr) minmax(420px, 1.22fr);
+            gap: 18px;
+            padding: 18px 28px 24px;
+            align-items: start;
+        }
+
+        .card {
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.78);
+        }
+
+        .upload-area {
+            display: grid;
+            gap: 12px;
+            align-content: start;
+        }
+
+        .file-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 96px;
+            padding: 14px 18px;
+            border: 1.5px dashed rgba(32, 48, 64, 0.22);
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 224, 213, 0.38));
+            text-align: center;
+            color: var(--muted);
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .file-label:hover {
+            transform: translateY(-2px);
+            border-color: rgba(217, 108, 74, 0.55);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 224, 213, 0.62));
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        button {
+            border: none;
+            border-radius: 999px;
+            padding: 13px 22px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            box-shadow: 0 10px 24px rgba(217, 108, 74, 0.24);
+        }
+
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(217, 108, 74, 0.32);
+        }
+
+        button:disabled {
+            opacity: 0.65;
+            cursor: wait;
+        }
+
+        .hint {
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .status {
+            min-height: 24px;
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--success);
+        }
+
+        .status.error {
+            color: var(--accent-strong);
+        }
+
+        .preview-box {
+            display: grid;
+            gap: 12px;
+            align-content: start;
+        }
+
+        .preview-frame {
+            width: 100%;
+            min-height: 360px;
+            height: clamp(360px, 38vw, 520px);
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: linear-gradient(135deg, rgba(255, 224, 213, 0.62), rgba(238, 246, 255, 0.92));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .preview-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .preview-placeholder {
+            padding: 20px;
+            text-align: center;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .caption-box {
+            padding: 18px 20px;
+            border-radius: 16px;
+            background: var(--accent-soft);
+        }
+
+        .caption-box strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.82rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent-strong);
+        }
+
+        .caption-text {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 820px) {
+            body {
+                padding: 16px;
+            }
+
+            .page {
+                min-height: calc(100vh - 32px);
+                border-radius: 24px;
+                border: 1px solid var(--line);
+                box-shadow: var(--shadow);
+            }
+
+            .hero,
+            .content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .hero,
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .preview-frame {
+                min-height: 280px;
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="hero">
+            <div>
+                <p class="eyebrow">Vision Demo</p>
+                <h1>Image Caption Generator</h1>
+                <p class="subtitle">
+                    Upload an image, generate a caption, and save every result automatically so you can review it later on the history page.
+                </p>
+            </div>
+
+            <a class="nav-link" href="/history">Open History Page</a>
+        </section>
+
+        <section class="content">
+            <div class="card upload-area">
+                <label class="file-label" for="file" id="fileLabel">
+                    <span id="fileLabelText">Choose an image to generate a caption</span>
+                </label>
+                <input type="file" id="file" accept="image/*">
+
+                <div class="actions">
+                    <button id="uploadBtn" type="button">Generate Caption</button>
+                    <span class="hint">Supported: common image formats like JPG and PNG</span>
+                </div>
+
+                <p class="status" id="status"></p>
+            </div>
+
+            <aside class="card preview-box">
+                <div class="preview-frame">
+                    <img id="previewImage" alt="Selected preview">
+                    <div class="preview-placeholder" id="previewPlaceholder">
+                        Your selected image will appear here before upload.
+                    </div>
+                </div>
+
+                <div class="caption-box">
+                    <strong>Generated Caption</strong>
+                    <p class="caption-text" id="captionText">The model output will appear here after upload.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script>
+        const fileInput = document.getElementById("file");
+        const uploadBtn = document.getElementById("uploadBtn");
+        const statusText = document.getElementById("status");
+        const captionText = document.getElementById("captionText");
+        const previewImage = document.getElementById("previewImage");
+        const previewPlaceholder = document.getElementById("previewPlaceholder");
+        const fileLabelText = document.getElementById("fileLabelText");
+
+        function setStatus(message, type = "success") {
+            statusText.textContent = message;
+            statusText.className = `status ${type === "error" ? "error" : ""}`.trim();
+        }
+
+        fileInput.addEventListener("change", () => {
+            const file = fileInput.files[0];
+
+            if (!file) {
+                previewImage.style.display = "none";
+                previewImage.removeAttribute("src");
+                previewPlaceholder.style.display = "block";
+                fileLabelText.textContent = "Choose an image to generate a caption";
+                return;
+            }
+
+            fileLabelText.textContent = file.name;
+            previewImage.src = URL.createObjectURL(file);
+            previewImage.style.display = "block";
+            previewPlaceholder.style.display = "none";
+            setStatus("");
+        });
+
+        uploadBtn.addEventListener("click", send);
+
+        async function send() {
+            const file = fileInput.files[0];
+
+            if (!file) {
+                setStatus("Please choose an image first.", "error");
+                captionText.textContent = "Waiting for an image to upload.";
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            uploadBtn.disabled = true;
+            setStatus("Generating caption and saving it to history...");
+            captionText.textContent = "Model is processing your image.";
+
+            try {
+                const res = await fetch("/predict", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await res.json().catch(() => ({}));
+
+                if (!res.ok) {
+                    throw new Error(data.detail || "Request failed");
+                }
+
+                captionText.textContent = data.caption || "No caption returned.";
+                setStatus("Caption generated and saved to history.");
+            } catch (error) {
+                setStatus("Caption generation failed.", "error");
+                captionText.textContent = error.message || "Start the backend server and try again.";
+            } finally {
+                uploadBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
