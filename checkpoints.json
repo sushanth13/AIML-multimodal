@@ -1,0 +1,282 @@
+[
+    {
+        "epoch": 1,
+        "loss": 5.144940323499764,
+        "acc": 0.2907436979412928,
+        "score": -4.854196625558471,
+        "path": "artifacts/model_epoch_1.pth"
+    },
+    {
+        "epoch": 2,
+        "loss": 4.546194068740749,
+        "acc": 0.338743571883753,
+        "score": -4.207450496856996,
+        "path": "artifacts/model_epoch_2.pth"
+    },
+    {
+        "epoch": 3,
+        "loss": 4.32518147942405,
+        "acc": 0.36056781397558874,
+        "score": -3.9646136654484616,
+        "path": "artifacts/model_epoch_3.pth"
+    },
+    {
+        "epoch": 4,
+        "loss": 4.190282725388149,
+        "acc": 0.3734405734239593,
+        "score": -3.81684215196419,
+        "path": "artifacts/model_epoch_4.pth"
+    },
+    {
+        "epoch": 5,
+        "loss": 4.094547625907562,
+        "acc": 0.38435274085564264,
+        "score": -3.7101948850519193,
+        "path": "artifacts/model_epoch_5.pth"
+    },
+    {
+        "epoch": 6,
+        "loss": 4.00339880979286,
+        "acc": 0.39435757543340405,
+        "score": -3.6090412343594562,
+        "path": "artifacts/model_epoch_6.pth"
+    },
+    {
+        "epoch": 7,
+        "loss": 3.9360243008571603,
+        "acc": 0.4026215454566983,
+        "score": -3.533402755400462,
+        "path": "artifacts/model_epoch_7.pth"
+    },
+    {
+        "epoch": 8,
+        "loss": 3.8693922723614196,
+        "acc": 0.4108567644692027,
+        "score": -3.4585355078922166,
+        "path": "artifacts/model_epoch_8.pth"
+    },
+    {
+        "epoch": 9,
+        "loss": 3.814953528410234,
+        "acc": 0.41892729694373665,
+        "score": -3.396026231466497,
+        "path": "artifacts/model_epoch_9.pth"
+    },
+    {
+        "epoch": 10,
+        "loss": 3.7650872302505207,
+        "acc": 0.4233918302450332,
+        "score": -3.3416954000054875,
+        "path": "artifacts/model_epoch_10.pth"
+    },
+    {
+        "epoch": 11,
+        "loss": 3.7278451277774836,
+        "acc": 0.42944029198550737,
+        "score": -3.298404835791976,
+        "path": "artifacts/model_epoch_11.pth"
+    },
+    {
+        "epoch": 12,
+        "loss": 3.680252733170611,
+        "acc": 0.4366559999053596,
+        "score": -3.2435967332652518,
+        "path": "artifacts/model_epoch_12.pth"
+    },
+    {
+        "epoch": 13,
+        "loss": 3.6467199961344403,
+        "acc": 0.4408791599928813,
+        "score": -3.205840836141559,
+        "path": "artifacts/model_epoch_13.pth"
+    },
+    {
+        "epoch": 14,
+        "loss": 3.6121195844134446,
+        "acc": 0.4456113672004942,
+        "score": -3.16650821721295,
+        "path": "artifacts/model_epoch_14.pth"
+    },
+    {
+        "epoch": 15,
+        "loss": 3.5694466605876225,
+        "acc": 0.45251083445311596,
+        "score": -3.1169358261345064,
+        "path": "artifacts/model_epoch_15.pth"
+    },
+    {
+        "epoch": 16,
+        "loss": 3.5411295761852144,
+        "acc": 0.4561301207672271,
+        "score": -3.084999455417987,
+        "path": "artifacts/model_epoch_16.pth"
+    },
+    {
+        "epoch": 17,
+        "loss": 3.5209802015772405,
+        "acc": 0.45989535860983205,
+        "score": -3.0610848429674085,
+        "path": "artifacts/model_epoch_17.pth"
+    },
+    {
+        "epoch": 18,
+        "loss": 3.483223940591392,
+        "acc": 0.46494601499797206,
+        "score": -3.01827792559342,
+        "path": "artifacts/model_epoch_18.pth"
+    },
+    {
+        "epoch": 19,
+        "loss": 3.4457609521517965,
+        "acc": 0.47051416828513565,
+        "score": -2.9752467838666607,
+        "path": "artifacts/model_epoch_19.pth"
+    },
+    {
+        "epoch": 20,
+        "loss": 3.42890499762769,
+        "acc": 0.47328745837957825,
+        "score": -2.9556175392481117,
+        "path": "artifacts/model_epoch_20.pth"
+    },
+    {
+        "epoch": 21,
+        "loss": 3.408702794860744,
+        "acc": 0.47851161297418776,
+        "score": -2.9301911818865563,
+        "path": "artifacts/model_epoch_21.pth"
+    },
+    {
+        "epoch": 22,
+        "loss": 3.3774041319793127,
+        "acc": 0.4831860768500949,
+        "score": -2.8942180551292176,
+        "path": "artifacts/model_epoch_22.pth"
+    },
+    {
+        "epoch": 23,
+        "loss": 3.352382898930484,
+        "acc": 0.4869126816025775,
+        "score": -2.865470217327906,
+        "path": "artifacts/model_epoch_23.pth"
+    },
+    {
+        "epoch": 24,
+        "loss": 3.3263109707982284,
+        "acc": 0.4918850806451613,
+        "score": -2.8344258901530672,
+        "path": "artifacts/model_epoch_24.pth"
+    },
+    {
+        "epoch": 25,
+        "loss": 3.3094044319488716,
+        "acc": 0.49442974288607927,
+        "score": -2.8149746890627925,
+        "path": "artifacts/model_epoch_25.pth"
+    },
+    {
+        "epoch": 26,
+        "loss": 3.282247343003375,
+        "acc": 0.4988277470782709,
+        "score": -2.7834195959251042,
+        "path": "artifacts/model_epoch_26.pth"
+    },
+    {
+        "epoch": 27,
+        "loss": 3.262951506008892,
+        "acc": 0.5020727145125701,
+        "score": -2.7608787914963218,
+        "path": "artifacts/model_epoch_27.pth"
+    },
+    {
+        "epoch": 28,
+        "loss": 3.242003310101587,
+        "acc": 0.506396569464187,
+        "score": -2.7356067406374,
+        "path": "artifacts/model_epoch_28.pth"
+    },
+    {
+        "epoch": 29,
+        "loss": 3.216301152991049,
+        "acc": 0.5111386910293677,
+        "score": -2.705162461961681,
+        "path": "artifacts/model_epoch_29.pth"
+    },
+    {
+        "epoch": 30,
+        "loss": 3.2045200404880934,
+        "acc": 0.5124039726035549,
+        "score": -2.6921160678845384,
+        "path": "artifacts/model_epoch_30.pth"
+    },
+    {
+        "epoch": 31,
+        "loss": 3.1890211492214564,
+        "acc": 0.5158202731677268,
+        "score": -2.6732008760537296,
+        "path": "artifacts/model_epoch_31.pth"
+    },
+    {
+        "epoch": 32,
+        "loss": 3.166862260170703,
+        "acc": 0.5193778684344722,
+        "score": -2.6474843917362305,
+        "path": "artifacts/model_epoch_32.pth"
+    },
+    {
+        "epoch": 33,
+        "loss": 3.146700621550938,
+        "acc": 0.5239457178968355,
+        "score": -2.6227549036541022,
+        "path": "artifacts/model_epoch_33.pth"
+    },
+    {
+        "epoch": 34,
+        "loss": 3.1313788638924653,
+        "acc": 0.5274249833823949,
+        "score": -2.6039538805100704,
+        "path": "artifacts/model_epoch_34.pth"
+    },
+    {
+        "epoch": 35,
+        "loss": 3.1160498673061157,
+        "acc": 0.5311256471537098,
+        "score": -2.5849242201524056,
+        "path": "artifacts/model_epoch_35.pth"
+    },
+    {
+        "epoch": 36,
+        "loss": 3.096356098007106,
+        "acc": 0.5342196445832403,
+        "score": -2.5621364534238658,
+        "path": "artifacts/model_epoch_36.pth"
+    },
+    {
+        "epoch": 37,
+        "loss": 3.0761016398855725,
+        "acc": 0.5367609941503103,
+        "score": -2.5393406457352623,
+        "path": "artifacts/model_epoch_37.pth"
+    },
+    {
+        "epoch": 38,
+        "loss": 3.059291253299833,
+        "acc": 0.5397324290233866,
+        "score": -2.5195588242764466,
+        "path": "artifacts/model_epoch_38.pth"
+    },
+    {
+        "epoch": 39,
+        "loss": 3.046282166654959,
+        "acc": 0.5441372383640357,
+        "score": -2.502144928290923,
+        "path": "artifacts/model_epoch_39.pth"
+    },
+    {
+        "epoch": 40,
+        "loss": 3.0332654005326565,
+        "acc": 0.545277912293263,
+        "score": -2.4879874882393933,
+        "path": "artifacts/model_epoch_40.pth"
+    }
+]
